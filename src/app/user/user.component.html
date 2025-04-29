@@ -1,6 +1,21 @@
 <div>
-    <button>
-        <img />
-        <span>Name</span>
+    <button (click)="onSelectUser()">
+      <!-- <img [src]="selectedUsers.avatar"/> Property Binding syntax, in this we warp the DOM element's property with square brackets [] and the assigning value inside the quotations. -->
+      <!-- The above line will not display image correctly due to missing path. -->
+      <!-- <img
+        [src]="'assets/users/' + selectedUsers.avatar"
+        [alt]="selectedUsers.name"
+      /> -->
+      <!-- Here above, we added a string which contains fixed value(path) and then concatenate it with our property's value. -->
+  
+      <!-- In the code below, we used approach of "Using Getters" for Computed values. Which we use for more cleaner code -->
+      <img
+        [src]="imagePath"
+        [alt]="selectedUsers.name"
+      />
+  
+      <span>{{ selectedUsers.name }}</span>
+      <!-- two-Curly Braces: String Interpolation, here in these brackets we can refer any public property of our component class. -->
     </button>
-</div>
+  </div>
+  

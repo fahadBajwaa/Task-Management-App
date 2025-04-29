@@ -9,13 +9,16 @@
       <!-- Here above, we added a string which contains fixed value(path) and then concatenate it with our property's value. -->
   
       <!-- In the code below, we used approach of "Using Getters" for Computed values. Which we use for more cleaner code -->
-      <img
+      <!-- <img
         [src]="imagePath"
         [alt]="selectedUsers.name"
-      />
+      /> -->
   
-      <span>{{ selectedUsers.name }}</span>
+      <!-- <span>{{ selectedUsers.name }}</span> -->
       <!-- two-Curly Braces: String Interpolation, here in these brackets we can refer any public property of our component class. -->
+
+      <img [src]="imagePath" [alt]="name"/>
+      <span>{{name}}</span>
     </button>
   </div>
   

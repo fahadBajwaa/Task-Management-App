@@ -12,7 +12,13 @@
     <!-- <li>
       <app-user />
     </li> -->
-    <li>
+
+    @for (user of users; track user.id) {
+      <li>
+        <app-user [user]="user" (select)="onSelectUser($event)" />
+      </li>
+    }
+    <!-- <li> -->
       <!-- <app-user
         [id]="users[0].id"
         [avatar]="users[0].avatar"
@@ -21,7 +27,7 @@
       /> -->
       <!--  "$event" it is not just available when working with custom events but also used to get hold of potentially emitted values. -->
 
-      <app-user [user]="users[0]" (select)="onSelectUser($event)" />
+      <!-- <app-user [user]="users[0]" (select)="onSelectUser($event)" />
     </li>
     <li>
       <app-user [user]="users[1]" (select)="onSelectUser($event)" />
@@ -31,7 +37,7 @@
     </li>
     <li>
       <app-user [user]="users[3]" (select)="onSelectUser($event)" />
-    </li>
+    </li> -->
   </ul>
 
   <app-tasks [name]="selectedUser ? selectedUser.name : ''" />

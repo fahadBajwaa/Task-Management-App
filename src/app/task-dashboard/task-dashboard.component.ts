@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../task-dashboard/header/header.component'; // Imported Header Component
+import { HeaderComponent } from '../task-dashboard/header/header.component';
 import { UserComponent } from '../task-dashboard/user/user.component';
-
 import { DUMMY_USERS } from '../dummy-users';
 import { TasksComponent } from '../task-dashboard/tasks/tasks.component';
+
+//import User interface from User Component
+import type { User } from '../task-dashboard/user/user.component';
 
 @Component({
   selector: 'app-task-dashboard',
@@ -14,14 +16,9 @@ import { TasksComponent } from '../task-dashboard/tasks/tasks.component';
 })
 export class TaskDashboardComponent {
   users = DUMMY_USERS;
-  selectedUserId = 'u1';
+  selectedUser = this.users[0];  // stores the full user object
 
-  // getter property
-  get selectedUser() {
-    return this.users.find((user) => user.id === this.selectedUserId)!;
-  }
-
-  onSelectUser(id: string) {
-    this.selectedUserId = id;
+  onSelectUser(user: User) {
+    this.selectedUser = user;
   }
 }

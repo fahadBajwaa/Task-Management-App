@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 // We can use 'type alias' or 'interface' for more cleaner code.
-interface User {
+export interface User {
   id: string;
   avatar: string;
   name: string;
@@ -16,13 +16,13 @@ interface User {
 export class UserComponent {
   @Input({ required: true }) user!: User;
 
-  @Output() select = new EventEmitter<string>();
+  @Output() select = new EventEmitter<User>();
 
   get imagePath() {
     return 'assets/users/' + this.user.avatar;
   }
 
   onSelectUser() {
-    this.select.emit(this.user.id); //  'select' property is used to emit a new value.
+    this.select.emit(this.user); //  'select' property is used to emit a new value.
   }
 }

@@ -1,27 +1,11 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from './header/header.component'; // Imported Header Component
-import { UserComponent } from './user/user.component';
-
-import { DUMMY_USERS } from './dummy-users';
-import { TasksComponent } from './tasks/tasks.component';
+import { TaskDashboardComponent } from './task-dashboard/task-dashboard.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, UserComponent, TasksComponent],
+  imports: [TaskDashboardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  users = DUMMY_USERS;
-  selectedUserId = 'u1';
-
-  // getter property
-  get selectedUser() {
-    return this.users.find((user) => user.id === this.selectedUserId)!;
-  }
-
-  onSelectUser(id: string) {
-    this.selectedUserId = id;
-  }
-}
+export class AppComponent {}

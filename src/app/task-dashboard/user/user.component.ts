@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-// We can use 'type alias' or 'interface' for more cleaner code.
-export interface User {
-  id: string;
-  avatar: string;
-  name: string;
-}
+// We can use 'type alias' or 'interface' for more cleaner code. 
+// Since we are using model here now, so we will just import interface from model file.
+import { type User } from './user.model';
+
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -26,3 +25,5 @@ export class UserComponent {
     this.select.emit(this.user); //  'select' property is used to emit a new value.
   }
 }
+// export { User };
+

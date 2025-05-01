@@ -5,7 +5,7 @@ import { DUMMY_USERS } from '../dummy-users';
 import { TasksComponent } from '../task-dashboard/tasks/tasks.component';
 
 //import User interface from User Component
-import type { User } from '../task-dashboard/user/user.component';
+import { type User } from '../task-dashboard/user/user.model';
 
 @Component({
   selector: 'app-task-dashboard',
@@ -16,7 +16,7 @@ import type { User } from '../task-dashboard/user/user.component';
 })
 export class TaskDashboardComponent {
   users = DUMMY_USERS;
-  selectedUser = this.users[0];  // stores the full user object
+  selectedUser = this.users[0]; // stores the full user object
 
   onSelectUser(user: User) {
     this.selectedUser = user;

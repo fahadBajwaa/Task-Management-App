@@ -1,16 +1,20 @@
 import { Component, Input } from '@angular/core';
 import { TaskDetailsComponent } from './tasks-details/tasks-details.component';
+import { AddTaskComponent } from "./add-task/add-task.component";
+
+import { type NewTaskData } from './add-task/add-task.model';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskDetailsComponent],
+  imports: [TaskDetailsComponent, AddTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.scss',
 })
 export class TasksComponent {
   @Input({ required: true }) name?: string; // name of the selected user
-  @Input({ required: true }) userId!: String; // id of the selected User
+  @Input({ required: true }) userId!: string; // id of the selected User
+  isAddingTask = false; 
 
   // dummy task data
   tasks = [
@@ -46,5 +50,24 @@ export class TasksComponent {
   // Complete task based on task Id
   onCompleteTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
+
+  onStartAddTask() {
+    this.isAddingTask = true;
+  }
+
+  onCancelAddTask(){
+    this.isAddingTask = false;
+  }
+
+  onAddTask(taskData: NewTaskData){
+    this.tasks.push({
+      id: new Date().getTime().toString(),  //not unique but still works for this task, getTime is to get time in miliseconds
+      userId: this.userId,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.date
+    })
+    this.isAddingTask = false;
   }
 }

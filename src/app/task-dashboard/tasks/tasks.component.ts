@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TaskDetailsComponent } from './tasks-details/tasks-details.component';
-import { AddTaskComponent } from "./add-task/add-task.component";
+import { AddTaskComponent } from './add-task/add-task.component';
 
 import { type NewTaskData } from './add-task/add-task.model';
 
@@ -14,7 +14,7 @@ import { type NewTaskData } from './add-task/add-task.model';
 export class TasksComponent {
   @Input({ required: true }) name?: string; // name of the selected user
   @Input({ required: true }) userId!: string; // id of the selected User
-  isAddingTask = false; 
+  isAddingTask = false;
 
   // dummy task data
   tasks = [
@@ -56,18 +56,18 @@ export class TasksComponent {
     this.isAddingTask = true;
   }
 
-  onCancelAddTask(){
+  onCancelAddTask() {
     this.isAddingTask = false;
   }
 
-  onAddTask(taskData: NewTaskData){
+  onAddTask(taskData: NewTaskData) {
     this.tasks.push({
-      id: new Date().getTime().toString(),  //not unique but still works for this task, getTime is to get time in miliseconds
+      id: new Date().getTime().toString(), //not unique but still works for this task, getTime is to get time in miliseconds
       userId: this.userId,
       title: taskData.title,
       summary: taskData.summary,
-      dueDate: taskData.date
-    })
+      dueDate: taskData.date,
+    });
     this.isAddingTask = false;
   }
 }
